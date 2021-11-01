@@ -24,6 +24,19 @@ func main() {
 
 	fmt.Println("*****************")
 
+	// fileContent, _ := readFromFile("my_cards")
+
+	// fmt.Printf("File contents: %s\n", fileContent)
+	newCards := newDeckFromFile("my_cards")
+	newCards.print()
+
+	fmt.Println("*****************")
+
+	newCards.shuffle()
+	newCards.print()
+
+	fmt.Println("*****************")
+
 	// cards.print()
 	hand, remainingCards := deal(cards, 5)
 
