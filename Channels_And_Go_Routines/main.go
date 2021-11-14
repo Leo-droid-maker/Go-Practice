@@ -34,9 +34,17 @@ func main() {
 	// 	fmt.Println(<-c)
 	// }
 
-	for l := range c { // Wait for the channel to return some value
-		time.Sleep(5 * time.Second) // 5 seconds main routine sleeps
-		go checkLink(l, c)
+	// for l := range c { // Wait for the channel to return some value
+	// 	time.Sleep(5 * time.Second) // 5 seconds main routine sleeps
+	// 	go checkLink(l, c)
+	// }
+
+	for l := range c {
+		go func(link string) {
+			time.Sleep(5 * time.Second)
+			fmt.Println("************************")
+			checkLink(link, c)
+		}(l) // () -  we are imediatly call this func
 	}
 
 	// fmt.Println(<-c)
